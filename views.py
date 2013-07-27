@@ -1,7 +1,8 @@
 import utils
 
 class ViewPage(utils.Handler):
-    pass
+    def get(self):
+        self.render("base.html", login=True)
 
 class EditPage(utils.Handler):
     pass

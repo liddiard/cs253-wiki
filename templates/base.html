@@ -2,16 +2,27 @@
 <html>
 <head>
     <title>vikio.</title>
-    <link rel="stylesheet" type="text/css" href="../stylesheets/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css"/>
 </head>
 
 <body>
     <header>
         <span id="banner">vikio.</span>
-        <div class="btn btn-large btn-action">register</div>
-        <div class="btn btn-large btn-std">login</div>
+        {% if not login %}
+            <div class="btn btn-large btn-action">register</div>
+            <div class="btn btn-large btn-std">login</div>
+        {% endif %}
+        
+        {% if login %}
+            <div class="btn btn-large btn-std">logout</div>
+        {% endif %}
+        
         <div class="separator"></div>
-        <div class="btn btn-large btn-action">edit</div>
+        
+        {% if login %}
+            <div class="btn btn-large btn-action">edit</div>
+        {% endif %}
+        
         <div class="btn btn-large btn-std">history</div>
     </header>
     <form method="post">

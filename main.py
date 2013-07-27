@@ -14,13 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os, webapp2, jinja2
-import models, utils
-
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
-                                autoescape = True)
+import webapp2
+import views
 
 app = webapp2.WSGIApplication([
-    ('/?', views.ViewPage)),
+    ('/?', views.ViewPage)
     ], debug=True)
