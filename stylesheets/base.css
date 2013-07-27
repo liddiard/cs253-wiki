@@ -11,17 +11,79 @@ textarea {
     right: 0;
     border: 0;
     margin: 0;
-    padding: 10%;
+    padding: 150px 10% 50px 10%;
     width: 80%;
     line-height: 1.5em;
     resize: none;
     outline: none;
     background-color: transparent;
+    z-index: -1;
 }
 
 header {
-    position: absolute;
-    left: 10%;
-    margin-top: 10px;
+    width: 80%;
+    height: 100px;
+    padding: 0 10%;
+    background-color: rgba(255,255,255, 0.8);
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.5);
+}
+
+header .btn {
+    float: right;
+    margin-top: 30px;
+}
+
+header .separator {
+    height: 40px;
+    float: right;
+    margin: 30px 10px 0 10px;
+}
+
+#banner {
+    position: relative;
+    top: 10px;
     font-size: 4em;
 }
+
+.separator {
+    width: 1px;
+    background-color: #ccc;
+}
+
+.btn {
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-large {
+    width: 80px;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.btn-action {
+    background-color: #44d;
+}
+
+    .btn-action:hover {
+        background-color: #22b;
+    }
+    
+    .btn-action:active {
+        background-color: #009;
+    }
+
+.btn-std {
+    background-color: #999;
+}
+
+    .btn-std:hover {
+        background-color: #777;
+    }
+    
+    .btn-std:active {
+        background-color: #555;
+    }
