@@ -22,5 +22,5 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                 autoescape = True)
 
 app = webapp2.WSGIApplication([
-    ('/?', MainHandler)),
+    ('/?', views.ViewPage)),
     ], debug=True)
