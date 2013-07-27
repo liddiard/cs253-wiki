@@ -15,3 +15,12 @@
 # limitations under the License.
 #
 import os, webapp2, jinja2
+import models, utils
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
+                                autoescape = True)
+
+app = webapp2.WSGIApplication([
+    ('/?', MainHandler)),
+    ], debug=True)
