@@ -2,7 +2,7 @@ import utils
 
 class ViewPage(utils.Handler):
     def get(self):
-        self.render("base.html", login=True)
+        self.render("edit.html", login=True)
 
 class EditPage(utils.Handler):
     pass

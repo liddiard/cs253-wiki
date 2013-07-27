@@ -8,6 +8,7 @@
 <body>
     <header>
         <span id="banner">vikio.</span>
+        
         {% if not login %}
             <div class="btn btn-large btn-action">register</div>
             <div class="btn btn-large btn-std">login</div>
@@ -25,9 +26,10 @@
         
         <div class="btn btn-large btn-std">history</div>
     </header>
-    <form method="post">
-        <textarea></textarea>
-    </form>
+    
+    {% block content %}
+    {% endblock %}
+    
 </body>
 
 </html>
