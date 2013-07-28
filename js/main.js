@@ -1,6 +1,6 @@
 function invalidField(args) {
     for (var i = 0; i < arguments.length; i++) {
-        $(arguments[i]+'-msg').show();
+        $(arguments[i]+'-invalid').show();
     }
     
     var count = 0;
