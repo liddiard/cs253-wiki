@@ -30,7 +30,29 @@ def checkSecureVal(cookie):
     val = decomp[0]
     if makeSecureVal(val) == cookie:
         return val
-    
+
 def checkValidLogon(username):
     if username:
         return checkSecureVal(username)
+
+def verifyField(field_name, field_value, field_verify=None):
+    USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
+    PASS_RE = re.compile(r"^.{3,20}$")
+    EMAIL_RE = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
+    
+    regex = {
+        'username': USER_RE
+        'password': PASS_RE
+        'email': EMAIL_RE
+    }.get(field_name, None)
+    
+    if regex:
+        if regex.match(field_value):
+            return True
+        else:
+            return False
+    else:
+        if field_value == field_verify:
+            return True
+        else:
+            return False

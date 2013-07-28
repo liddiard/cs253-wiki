@@ -13,6 +13,14 @@ class EditPage(utils.Handler):
 class Register(utils.Handler):
     def get(self):
         self.render("register.html")
+    
+    def post(self):
+        username = self.request.get('username')
+        password = self.request.get('password')
+        verify = self.request.get('verify')
+        email = self.request.get('email')
+        
+        utils.verifyField('username', username)
 
 class Login(utils.Handler):
     pass
