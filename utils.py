@@ -16,7 +16,8 @@ class Handler(webapp2.RequestHandler):
 # set the jinja2 template directory
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
-                                autoescape = True)
+                                autoescape = True, 
+                                extensions = ['jinja2.ext.autoescape'])
 
 # cookies
 DEV_SECRET = "5ugMk8yy12lMKMMGlRkV" ### IMPORTANT: do not use in production

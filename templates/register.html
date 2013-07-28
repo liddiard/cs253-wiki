@@ -7,7 +7,7 @@
     <script>
         $(document).ready(function(){
             $('.invalid-msg').hide();
-            invalidField({{errors}});
+            invalidField({% autoescape false %}{{errors}}{% endautoescape %});
         })
     </script>
 
