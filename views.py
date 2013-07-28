@@ -20,7 +20,14 @@ class Register(utils.Handler):
         verify = self.request.get('verify')
         email = self.request.get('email')
         
-        utils.verifyField('username', username)
+        errors = utils.createErrorArgs(utils.usernameError(username),
+                              utils.passwordsError(password, verify),
+                              utils.emailError(email))
+        
+        if len(errors) == 0:
+            self.write("wooohooooo")
+        else:
+            self.render("register.html", errors=errors)
 
 class Login(utils.Handler):
     pass

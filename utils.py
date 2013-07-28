@@ -1,4 +1,4 @@
-import os, webapp2, jinja2, hmac
+import os, webapp2, jinja2, hmac, re
 import utils
 
 # convenience functions from which handlers can inherit
@@ -35,24 +35,51 @@ def checkValidLogon(username):
     if username:
         return checkSecureVal(username)
 
-def verifyField(field_name, field_value, field_verify=None):
-    USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
-    PASS_RE = re.compile(r"^.{3,20}$")
-    EMAIL_RE = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
-    
-    regex = {
-        'username': USER_RE
-        'password': PASS_RE
-        'email': EMAIL_RE
-    }.get(field_name, None)
-    
-    if regex:
-        if regex.match(field_value):
-            return True
-        else:
-            return False
+# field validation
+def matchRegex(field, regex):
+    if regex.match(field):
+        return True
     else:
-        if field_value == field_verify:
-            return True
-        else:
-            return False
+        return False
+
+def usernameError(username):
+    USER_RE = re.compile(r'^[a-zA-Z0-9_-]{3,20}$')
+    if not matchRegex(username, USER_RE):
+        return "invalid"
+    elif False: # check if username already in datastore
+        return "taken"
+    else:
+        return False
+
+def passwordsError(password, verify):
+    PASS_RE = re.compile(r'^.{3,20}$')
+    if password != verify:
+        return "mismatch"
+    elif not matchRegex(password, PASS_RE):
+        return "invalid"
+    else:
+        return False
+
+def emailError(email):
+    EMAIL_RE = re.compile(r'^[\S]+@[\S]+\.[\S]+$')
+    if email == "":
+        return False
+    elif not matchRegex(email, EMAIL_RE):
+        return "invalid"
+    else:
+        return False
+    
+def createErrorArgs(username, passwords, email):
+    errors = []
+    if username == "invalid":
+        errors.append("\"#username\"")
+    elif username == "taken":
+        errors.append("\"#username-taken\"")
+    if passwords == "invalid":
+        errors.append("\"#password\"")
+    elif passwords == "mismatch":
+        errors.append("\"#verify\"")
+    if email == "invalid":
+        errors.append("\"#email\"")
+    
+    return ', '.join(errors)
