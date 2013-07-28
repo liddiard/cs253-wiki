@@ -1,7 +1,7 @@
 import os, webapp2, jinja2, hmac
 import utils
 
-# convenience functions from which handlers inherit
+# convenience functions from which handlers can inherit
 class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
@@ -23,8 +23,8 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
 DEV_SECRET = "5ugMk8yy12lMKMMGlRkV" ### IMPORTANT: do not use in production
 
 def makeSecureVal(s):
-    hash = hmac.new(s, DEV_SECRET).hexdigest()
-    return "%s|%s" % (s, hash)
+    h = hmac.new(s, DEV_SECRET).hexdigest()
+    return "%s|%s" % (s, h)
 
 def checkSecureVal(cookie):
     decomp = cookie.split('|')
