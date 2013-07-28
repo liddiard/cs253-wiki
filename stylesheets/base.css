@@ -67,15 +67,28 @@ header .separator {
 }
 
 .register .title {
+    display: block;
     font-size: 1.7em;
+    margin-bottom: 5px;
 }
 
-.register .form-field {
+.form-field {
     display: block;
     border: 1px solid #ccc;
     padding: 5px;
-    margin: 5px 0;
+    margin-bottom: 5px;
     width: 168px;
+}
+
+.invalid-input {
+    border: 1px solid red;
+}
+
+.invalid-msg {
+    position: absolute;
+    margin: 5px 0 -5px 200px;
+    width: 400px;
+    color: red;
 }
 
 .separator {
