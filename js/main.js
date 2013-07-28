@@ -3,7 +3,11 @@ function invalidField(args) {
         $(arguments[i]+'-msg').show();
     }
     
-    $(arguments[0]).focus(); //set focus on the first invalid field
+    if (arguments.length === 0) {
+        $('#username').focus()
+    } else {
+        $(arguments[0]).focus(); //set focus on the first invalid field
+    }
 
     var count = 0;
     function toggleBorder(args) {
