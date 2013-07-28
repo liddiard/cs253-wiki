@@ -2,6 +2,8 @@ function invalidField(args) {
     for (var i = 0; i < arguments.length; i++) {
         $(arguments[i]+'-msg').show();
     }
+    
+    $(arguments[0]).focus(); //set focus on the first invalid field
 
     var count = 0;
     function toggleBorder(args) {

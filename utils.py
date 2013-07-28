@@ -35,6 +35,9 @@ def checkSecureVal(cookie):
 def checkValidLogon(username):
     if username:
         return checkSecureVal(username)
+    
+def setUserCookie(username):
+    pass # TODO: implement
 
 # field validation
 def matchRegex(field, regex):
@@ -54,10 +57,10 @@ def usernameError(username):
 
 def passwordsError(password, verify):
     PASS_RE = re.compile(r'^.{3,20}$')
-    if password != verify:
-        return "mismatch"
-    elif not matchRegex(password, PASS_RE):
+    if not matchRegex(password, PASS_RE):
         return "invalid"
+    elif password != verify:
+        return "mismatch"
     else:
         return False
 

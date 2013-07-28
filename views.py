@@ -27,7 +27,8 @@ class Register(utils.Handler):
         if len(errors) == 0:
             self.write("wooohooooo")
         else:
-            self.render("register.html", errors=errors)
+            self.render("register.html", username=username, password=password, 
+                        verify=verify, email=email, errors=errors)
 
 class Login(utils.Handler):
     pass
