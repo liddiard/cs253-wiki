@@ -6,30 +6,32 @@
 </head>
 
 <body>
+
+    {% block header %}
     <header>
         <span id="banner">vikio.</span>
-        
+
         {% if not login %}
             <div class="btn btn-large btn-action">register</div>
             <div class="btn btn-large btn-std">login</div>
         {% endif %}
-        
+
         {% if login %}
             <div class="btn btn-large btn-std">logout</div>
         {% endif %}
-        
+
         <div class="separator"></div>
-        
+
         {% if login %}
             <div class="btn btn-large btn-action">edit</div>
         {% endif %}
-        
+
         <div class="btn btn-large btn-std">history</div>
     </header>
-    
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
-    
-</body>
 
+</body>
 </html>

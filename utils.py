@@ -31,6 +31,7 @@ def checkSecureVal(cookie):
     val = decomp[0]
     if makeSecureVal(val) == cookie:
         return val
-    else:
-        return None
-
+    
+def checkValidLogon(username):
+    if username:
+        return checkSecureVal(username)

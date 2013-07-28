@@ -32,6 +32,7 @@ header {
 
 header .btn {
     float: right;
+    margin: 0 5px;
     margin-top: 30px;
 }
 
@@ -47,6 +48,36 @@ header .separator {
     font-size: 4em;
 }
 
+.register {
+    width: 180px;
+    height: 210px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(255,255,255, 0.8);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.5);
+    padding: 10px;
+}
+
+.register .btn {
+    float: right;
+}
+
+.register .title {
+    font-size: 1.7em;
+}
+
+.register .form-field {
+    display: block;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px 0;
+    width: 168px;
+}
+
 .separator {
     width: 1px;
     background-color: #ccc;
@@ -57,12 +88,12 @@ header .separator {
     color: #fff;
     text-align: center;
     cursor: pointer;
+    border: 0;
 }
 
 .btn-large {
     width: 80px;
     padding: 10px;
-    margin: 0 5px;
 }
 
 .btn-action {

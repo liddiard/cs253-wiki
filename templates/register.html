@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <form class="register" method="post">
+        <span class="title">register</span>
+        <input type="text" name="username" placeholder="username" class="form-field"/>
+        <input type="password" name="password" placeholder="password" class="form-field"/>
+        <input type="password" name="verify" placeholder="verify password" class="form-field"/>
+        <input type="text" name="email" placeholder="email (optional)" class="form-field"/>
+        <input type="submit" class="btn btn-action btn-large"/>
+    </form>
+{% endblock %}
