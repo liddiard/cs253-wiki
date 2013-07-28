@@ -72,7 +72,7 @@ header .separator {
     .btn-action:hover {
         background-color: #22b;
     }
-    
+
     .btn-action:active {
         background-color: #009;
     }
@@ -84,7 +84,7 @@ header .separator {
     .btn-std:hover {
         background-color: #777;
     }
-    
+
     .btn-std:active {
         background-color: #555;
     }
