@@ -1,8 +1,8 @@
 function invalidField(args) {
     for (var i = 0; i < arguments.length; i++) {
-        $(arguments[i]+'-invalid').show();
+        $(arguments[i]+'-msg').show();
     }
-    
+
     var count = 0;
     function toggleBorder(args) {
         count++;
@@ -13,6 +13,6 @@ function invalidField(args) {
             setTimeout(toggleBorder(args), 500);
         }
     }
-    
+
     setTimeout(toggleBorder(arguments), 500);
 }
