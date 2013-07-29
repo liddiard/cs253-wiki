@@ -2,7 +2,7 @@ function invalidField(args) {
     for (var i = 0; i < arguments.length; i++) {
         $(arguments[i]+'-msg').show();
     }
-    
+
     if (arguments.length === 0) {
         $('#username').focus()
     } else {
@@ -22,3 +22,9 @@ function invalidField(args) {
 
     setTimeout(toggleBorder(arguments), 500);
 }
+
+$(document).ready(function(){
+    $('#btn-register').on("click", function(){
+        window.open("/signup/");
+    });
+});
