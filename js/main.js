@@ -3,12 +3,6 @@ function invalidField(args) {
         $(arguments[i]+'-msg').show();
     }
 
-    if (arguments.length === 0) {
-        $('#username').focus()
-    } else {
-        $(arguments[0]).focus(); //set focus on the first invalid field
-    }
-
     var count = 0;
     function toggleBorder(args) {
         count++;
@@ -21,6 +15,12 @@ function invalidField(args) {
     }
 
     setTimeout(toggleBorder(arguments), 500);
+
+    if (arguments.length === 0) {
+        $('#username').focus()
+    } else {
+        $(arguments[0]).focus(); //set focus on the first invalid field
+    }
 }
 
 $(document).ready(function(){

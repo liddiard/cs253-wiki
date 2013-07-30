@@ -1,5 +1,4 @@
 import os, webapp2, jinja2, hmac, re
-import utils
 
 # convenience functions from which handlers can inherit
 class Handler(webapp2.RequestHandler):
@@ -36,8 +35,10 @@ def checkValidLogon(username):
     if username:
         return checkSecureVal(username)
     
-def setUserCookie(username):
-    pass # TODO: implement
+def setUserCookie(obj, username):
+    '''"obj" should always be the "self" attribute from a request handler'''
+    obj.response.header.add_header(str('Set-Cookie'),
+                                   str('username='+username+'; Path=/'))
 
 # field validation
 def matchRegex(field, regex):

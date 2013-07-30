@@ -1,4 +1,4 @@
-import utils
+import utils, models
 
 class ViewPage(utils.Handler):
     def get(self):
@@ -25,7 +25,8 @@ class Register(utils.Handler):
                               utils.emailError(email))
         
         if len(errors) == 0:
-            self.write("wooohooooo")
+            models.User.addUser(username, password, email)
+            utils.setUserCookie(self, username)
         else:
             self.render("register.html", username=username, password=password, 
                         verify=verify, email=email, errors=errors)
