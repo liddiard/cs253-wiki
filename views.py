@@ -24,10 +24,12 @@ class Register(utils.Handler):
                               utils.passwordsError(password, verify),
                               utils.emailError(email))
         
-        if len(errors) == 0:
-            models.User.addUser(username, password, email)
+        if errors is None: # registration successful
+            models.addUser(username, password, email)
             utils.setUserCookie(self, username)
-        else:
+            # TODO: redirect to success page
+            
+        else: # registration unsuccessful
             self.render("register.html", username=username, password=password, 
                         verify=verify, email=email, errors=errors)
 

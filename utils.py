@@ -86,5 +86,8 @@ def createErrorArgs(username, passwords, email):
         errors.append("\"#verify\"")
     if email == "invalid":
         errors.append("\"#email\"")
-    
-    return ', '.join(errors)
+        
+    if len(errors) == 0:
+        return None
+    else:
+        return ', '.join(errors)
