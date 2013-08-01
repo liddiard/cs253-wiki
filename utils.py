@@ -42,10 +42,7 @@ def setCookie(obj, key, value):
 
 # field validation
 def matchRegex(field, regex):
-    if regex.match(field):
-        return True
-    else:
-        return False
+    return regex.match(field)
 
 def usernameError(username):
     USER_RE = re.compile(r'^[a-zA-Z0-9_-]{3,20}$')
