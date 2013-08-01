@@ -35,10 +35,10 @@ def checkValidLogon(username):
     if username:
         return checkSecureVal(username)
     
-def setUserCookie(obj, username):
+def setCookie(obj, key, value):
     '''"obj" should always be the "self" attribute from a request handler'''
-    obj.response.header.add_header(str('Set-Cookie'),
-                                   str('username='+username+'; Path=/'))
+    obj.response.headers.add_header(str('Set-Cookie'),
+                                   str('%s=%s; Path=/' % (key, value)))
 
 # field validation
 def matchRegex(field, regex):

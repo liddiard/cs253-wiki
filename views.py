@@ -26,12 +26,17 @@ class Register(utils.Handler):
         
         if errors is None: # registration successful
             models.addUser(username, password, email)
-            utils.setUserCookie(self, username)
-            # TODO: redirect to success page
+            utils.setCookie(self, "username", username)
+            self.redirect("/signup/success/")
             
         else: # registration unsuccessful
             self.render("register.html", username=username, password=password, 
                         verify=verify, email=email, errors=errors)
+            
+class RegisterSuccess(utils.Handler):
+    def get(self):
+        self.render("register_success.html")
+        # TODO: checkSecureVal on register success, reload parent page
 
 class Login(utils.Handler):
     pass

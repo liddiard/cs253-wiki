@@ -48,15 +48,18 @@ header .separator {
     font-size: 4em;
 }
 
-.register {
-    width: 180px;
-    height: 210px;
+.hvcenter {
     position: absolute;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+}
+
+.register {
+    width: 180px;
+    height: 210px;
     background-color: rgba(255,255,255, 0.8);
     box-shadow: 0 0 5px rgba(0,0,0, 0.5);
     padding: 10px;
@@ -70,6 +73,13 @@ header .separator {
     display: block;
     font-size: 1.7em;
     margin-bottom: 5px;
+}
+
+.register-success {
+    font-weight: normal;
+    width: 500px;
+    height: 150px;
+    text-align: center;
 }
 
 .form-field {
