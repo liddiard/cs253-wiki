@@ -35,8 +35,11 @@ class Register(utils.Handler):
             
 class RegisterSuccess(utils.Handler):
     def get(self):
-        self.render("register_success.html")
-        # TODO: checkSecureVal on register success, reload parent page
+        valid_cookie = utils.checkSecureVal(utils.getCookie('username'))
+        if valid_cookie:
+            self.render("register_success.html")
+        else:
+            self.redirect("/signup/")
 
 class Login(utils.Handler):
     pass
