@@ -26,7 +26,8 @@ class Register(utils.Handler):
         
         if errors is None: # registration successful
             models.addUser(username, password, email)
-            utils.setCookie(self, "username", username)
+            user_cookie = utils.makeSecureVal(username)
+            utils.setCookie(self, "username", user_cookie)
             self.redirect("/signup/success/")
             
         else: # registration unsuccessful
@@ -35,7 +36,7 @@ class Register(utils.Handler):
             
 class RegisterSuccess(utils.Handler):
     def get(self):
-        valid_cookie = utils.checkSecureVal(utils.getCookie('username'))
+        valid_cookie = utils.checkSecureVal(utils.getCookie(self, "username"))
         if valid_cookie:
             self.render("register_success.html")
         else:

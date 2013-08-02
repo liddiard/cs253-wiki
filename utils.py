@@ -22,8 +22,9 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
 DEV_SECRET = "5ugMk8yy12lMKMMGlRkV" ### IMPORTANT: do not use in production
 
 def makeSecureVal(s):
-    h = hmac.new(s, DEV_SECRET).hexdigest()
-    return "%s|%s" % (s, h)
+    string = str(s)
+    h = hmac.new(string, DEV_SECRET).hexdigest()
+    return "%s|%s" % (string, h)
 
 def checkSecureVal(cookie):
     decomp = cookie.split('|')
