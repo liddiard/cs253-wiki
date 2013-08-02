@@ -26,6 +26,7 @@ class Register(utils.Handler):
         
         if errors is None: # registration successful
             models.addUser(username, password, email)
+                # TODO IMPORTANT: passwords should not be stored in plaintext
             user_cookie = utils.makeSecureVal(username)
             utils.setCookie(self, "username", user_cookie)
             self.redirect("/signup/success/")
