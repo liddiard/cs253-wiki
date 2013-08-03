@@ -13,7 +13,7 @@ handlers:
 - url: /js
   static_dir: js
 - url: /media
-  static_dir: js
+  static_dir: media
 
 - url: .*
   script: main.app

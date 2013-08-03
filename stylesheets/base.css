@@ -82,6 +82,10 @@ header .separator {
     text-align: center;
 }
 
+.register-success .loader {
+    margin: 0 auto;
+}
+
 .form-field {
     display: block;
     border: 1px solid #ccc;
