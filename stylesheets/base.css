@@ -76,14 +76,14 @@ header .separator {
 }
 
 .register-success {
-    font-weight: normal;
+    font-weight: 300 !important;
     width: 500px;
-    height: 150px;
+    height: 160px;
     text-align: center;
 }
 
 .register-success .loader {
-    margin: 0 auto;
+    margin: 5px auto;
 }
 
 .form-field {

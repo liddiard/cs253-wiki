@@ -37,9 +37,12 @@ class Register(utils.Handler):
             
 class RegisterSuccess(utils.Handler):
     def get(self):
-        valid_cookie = utils.checkSecureVal(utils.getCookie(self, "username"))
-        if valid_cookie:
-            self.render("register_success.html")
+        cookie = utils.getCookie(self, "username")
+        if cookie:
+            valid_cookie = utils.checkSecureVal(cookie)
+            if valid_cookie:
+                self.render("register_success.html")
+            else: self.redirect("/signup/")
         else:
             self.redirect("/signup/")
 
