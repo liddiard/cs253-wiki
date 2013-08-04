@@ -44,7 +44,7 @@ def setCookie(obj, key, value):
 def getCookie(obj, key):
     return obj.request.cookies.get(key)
 
-def getUsername(obj)
+def getUsername(obj):
     u_cookie = obj.request.cookies.get('username')
     if u_cookie:
         return u_cookie.split('|')[0]
