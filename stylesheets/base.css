@@ -18,7 +18,20 @@ textarea {
     resize: none;
     outline: none;
     background-color: transparent;
-    z-index: -1;
+}
+
+.page-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border: 0;
+    margin: 0;
+    padding: 150px 10% 50px 10%;
+    width: 80%;
+    line-height: 1.5em;
+    background-color: transparent;
+    overflow: auto;
 }
 
 header {

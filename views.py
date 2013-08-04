@@ -43,6 +43,7 @@ class RegisterSuccess(utils.Handler):
             if valid_cookie:
                 self.render("register_success.html",
                             username=utils.getUsername(self))
+                # doesn't take into account browser disallowing cookies?
             else: self.redirect("/signup/")
         else:
             self.redirect("/signup/")
