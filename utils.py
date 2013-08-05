@@ -30,7 +30,9 @@ def checkSecureVal(cookie):
     decomp = cookie.split('|')
     val = decomp[0]
     if makeSecureVal(val) == cookie:
-        return val
+        return True
+    else:
+        return False
 
 def validLogon(handler):
     u_cookie = handler.request.cookies.get('username')
