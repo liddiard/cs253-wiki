@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 
+{% block buttons %}
+    {% if not login %}
+        <div id="btn-register" class="btn btn-large btn-action">register</div>
+        <div class="btn btn-large btn-std">login</div>
+    {% endif %}
+
+    {% if login %}
+        <div class="btn btn-large btn-std">logout</div>
+    {% endif %}
+
+    <div class="separator"></div>
+
+    {% if login %}
+        <div class="btn btn-large btn-action">edit</div>
+    {% endif %}
+
+    <div class="btn btn-large btn-std">history</div>
+{% endblock %}
+
 {% block content %}
     <div class="page-content">{{Page.content}}</div>
 {% endblock %}

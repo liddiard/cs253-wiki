@@ -32,20 +32,20 @@ def checkSecureVal(cookie):
     if makeSecureVal(val) == cookie:
         return val
 
-def checkValidLogon(username):
-    if username:
-        return checkSecureVal(username)
+def validLogon(handler):
+    u_cookie = handler.request.cookies.get('username')
+    if u_cookie:
+        return checkSecureVal(u_cookie)
 
-def setCookie(obj, key, value):
-    '''"obj" should always be the "self" attribute from a request handler'''
-    obj.response.headers.add_header(str('Set-Cookie'),
-                                   str('%s=%s; Path=/' % (key, value)))
+def setCookie(handler, key, val):
+    handler.response.headers.add_header(str('Set-Cookie'),
+                                   str('%s=%s; Path=/' % (key, val)))
 
-def getCookie(obj, key):
-    return obj.request.cookies.get(key)
+def getCookie(handler, key):
+    return handler.request.cookies.get(key)
 
-def getUsername(obj):
-    u_cookie = obj.request.cookies.get('username')
+def getUsername(handler):
+    u_cookie = handler.request.cookies.get('username')
     if u_cookie:
         return u_cookie.split('|')[0]
     else:

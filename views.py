@@ -2,8 +2,7 @@ import utils, models
 
 class ViewPage(utils.Handler):
     def get(self):
-        username = self.request.cookies.get('username')
-        if utils.checkValidLogon(username):
+        if utils.validLogon(self):
             login = True
         self.render("edit.html", login=False)
 
@@ -28,7 +27,7 @@ class Register(utils.Handler):
             models.addUser(username, password, email)
                 # TODO IMPORTANT: passwords should not be stored in plaintext
             user_cookie = utils.makeSecureVal(username)
-            utils.setCookie(self, "username", user_cookie)
+            utils.setCookie(self, key="username", val=user_cookie)
             self.redirect("/signup/success/")
             
         else: # registration unsuccessful
@@ -37,14 +36,10 @@ class Register(utils.Handler):
             
 class RegisterSuccess(utils.Handler):
     def get(self):
-        cookie = utils.getCookie(self, "username")
-        if cookie:
-            valid_cookie = utils.checkSecureVal(cookie)
-            if valid_cookie:
-                self.render("register_success.html",
-                            username=utils.getUsername(self))
+        if utils.validLogon(self):
+            self.render("register_success.html",
+                        username=utils.getUsername(self))
                 # doesn't take into account browser disallowing cookies?
-            else: self.redirect("/signup/")
         else:
             self.redirect("/signup/")
 
