@@ -4,7 +4,9 @@ class ViewPage(utils.Handler):
     def get(self):
         if utils.validLogon(self):
             login = True
-        self.render("edit.html", login=False)
+        else:
+            login = False
+        self.render("edit.html", login=login)
 
 class EditPage(utils.Handler):
     pass
