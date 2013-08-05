@@ -2,10 +2,7 @@ import utils, models
 
 class ViewPage(utils.Handler):
     def get(self):
-        if utils.validLogon(self):
-            login = True
-        else:
-            login = False
+        login = utils.validLogon(self)
         self.render("edit.html", login=login)
 
 class EditPage(utils.Handler):
