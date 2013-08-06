@@ -2,8 +2,8 @@ import utils, models
 
 class ViewPage(utils.Handler):
     def get(self):
-        login = utils.validLogon(self)
-        self.render("edit.html", login=login)
+        logged_in = utils.validLogon(self)
+        self.render("edit.html", logged_in=login)
 
 class EditPage(utils.Handler):
     pass
