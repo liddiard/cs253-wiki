@@ -3,7 +3,7 @@ import utils, models
 class ViewPage(utils.Handler):
     def get(self):
         logged_in = utils.validLogon(self)
-        self.render("edit.html", logged_in=login)
+        self.render("view.html", login=logged_in)
 
 class EditPage(utils.Handler):
     pass
