@@ -23,9 +23,13 @@ function invalidField(args) {
     }
 }
 
-function closeRefreshParent() {
-    opener.location.reload();
-    window.close();
+function registerRedirect() {
+    if (opener == null) {
+        window.location.replace("../");
+    } else {
+        opener.location.reload();
+        window.close();
+    }
 }
 
 $(document).ready(function(){
