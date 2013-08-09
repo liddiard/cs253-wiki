@@ -1,4 +1,5 @@
 import utils, models
+import logging # TODO: remove in production
 
 class ViewPage(utils.Handler):
     def get(self):

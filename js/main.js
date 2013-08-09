@@ -23,6 +23,11 @@ function invalidField(args) {
     }
 }
 
+function closeRefreshParent() {
+    opener.location.reload();
+    window.close();
+}
+
 $(document).ready(function(){
     $('#btn-register').on("click", function(){
         window.open("/signup/");

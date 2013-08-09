@@ -6,8 +6,8 @@ class User(db.Model):
     password = db.StringProperty(required=True)
     email = db.StringProperty(required=False)
 
-def addUser(self, username, password, email=None):
-    u = User(username=username, password="1234", email=email)
+def addUser(username, password, email=None):
+    u = User(username=username, password=password, email=email)
     u.put()
 
 class Page(db.Model):
