@@ -40,4 +40,9 @@ $(document).ready(function(){
     $('#btn-register').on("click", function(){
         window.open("/signup/");
     });
+    
+    $('#btn-logout').on("click", function(){
+        deleteCookie('username');
+        location.reload();
+    });
 });
