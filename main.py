@@ -18,7 +18,8 @@ import webapp2
 import views
 
 app = webapp2.WSGIApplication([
-    ('/?', views.ViewPage),
+    ('(\w+)/?', views.ViewPage),
+    ('/_edit/(\w+)/?', views.EditPage)
     ('/signup/?', views.Register),
     ('/signup/success/?', views.RegisterSuccess)
     ], debug=True)
