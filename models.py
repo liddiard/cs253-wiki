@@ -32,3 +32,11 @@ class Page(db.Model):
     created = db.DateTimeProperty(auto_now_add=True)
     modified = db.DateTimeProperty(auto_now=True)
     last_modified_by = db.StringProperty()
+
+def pageExists(slug):
+    q = Page.all().filter('slug =', slug)
+    page = q.get()
+    if page is None:
+        return False
+    else: 
+       return page.slug
