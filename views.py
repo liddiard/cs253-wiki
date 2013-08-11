@@ -2,7 +2,7 @@ import utils, models
 import logging # TODO: remove in production
 
 class ViewPage(utils.Handler):
-    def get(self):
+    def get(self, slug):
         logged_in = utils.validLogon(self)
         self.render("view.html", login=logged_in)
     def post(self):
