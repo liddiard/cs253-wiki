@@ -47,9 +47,21 @@ header .separator {
     font-size: 4em;
 }
 
+#login {
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    padding: 10px;
+}
+
 .overlay {
     background-color: rgba(255,255,255, 0.8);
     box-shadow: 0 0 5px rgba(0,0,0, 0.5);
+}
+
+.buttons {
+    position: relative;
+    float: right;
 }
 
 .hvcenter {
@@ -96,6 +108,7 @@ header .separator {
     padding: 5px;
     margin-bottom: 5px;
     width: 168px;
+    background: transparent;
 }
 
 .invalid-input {

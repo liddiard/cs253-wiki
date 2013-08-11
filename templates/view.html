@@ -4,6 +4,10 @@
     {% if not login %}
         <div id="btn-register" class="btn btn-large btn-action">register</div>
         <div id="btn-login" class="btn btn-large btn-std">login</div>
+        <form class="overlay" id="login">
+            <input name="username" type="text" class="form-field"/>
+            <input name="password" type="password" class="form-field"/>
+        </form>
     {% endif %}
 
     {% if login %}

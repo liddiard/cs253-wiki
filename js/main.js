@@ -37,6 +37,7 @@ function deleteCookie(key) {
 }
 
 $(document).ready(function(){
+    $('#login').hide();
     $('#btn-register').on("click", function(){
         window.open("/signup/");
     });
