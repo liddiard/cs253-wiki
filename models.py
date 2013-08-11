@@ -6,9 +6,25 @@ class User(db.Model):
     password = db.StringProperty(required=True)
     email = db.StringProperty(required=False)
 
-def addUser(username, password, email=None):
-    u = User(username=username, password=password, email=email)
+def addUser(username, pw_hash, email=None):
+    u = User(username=username, password=pw_hash, email=email)
     u.put()
+
+def userExists(username):
+    q = User.all().filter('username =', username)
+    user = q.get()
+    if user is None:
+        return False
+    else:
+        return user
+
+def validCredentials(username, password):
+    user = userExists(username)
+    if user:
+        h = user.password
+        return utils.validPassword(username, password, h)
+    else:
+        return False
 
 class Page(db.Model):
     body = db.TextProperty()

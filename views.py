@@ -5,6 +5,15 @@ class ViewPage(utils.Handler):
     def get(self):
         logged_in = utils.validLogon(self)
         self.render("view.html", login=logged_in)
+    def post(self):
+        username = self.request.get('username')
+        password = self.request.get('password')
+        if models.validCredentials(username, password):
+            user_cookie = utils.makeSecureVal(username)
+            utils.setCookie(self, key="username", val=user_cookie)
+            self.write("valid")
+        else:
+            self.write("invalid login credentials")
 
 class EditPage(utils.Handler):
     pass
@@ -24,8 +33,8 @@ class Register(utils.Handler):
                               utils.emailError(email))
         
         if errors is None: # registration successful
-            models.addUser(username, password, email)
-                # TODO IMPORTANT: passwords should not be stored in plaintext
+            pw_hash = utils.makePasswordHash(username, password)
+            models.addUser(username, pw_hash, email)
             user_cookie = utils.makeSecureVal(username)
             utils.setCookie(self, key="username", val=user_cookie)
             self.redirect("/signup/success/")

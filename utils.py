@@ -1,4 +1,5 @@
-import os, webapp2, jinja2, hmac, re
+import os, webapp2, jinja2, hmac, re, random, string, hashlib
+import models
 
 # convenience functions from which handlers can inherit
 class Handler(webapp2.RequestHandler):
@@ -61,7 +62,7 @@ def usernameError(username):
     USER_RE = re.compile(r'^[a-zA-Z0-9_-]{3,20}$')
     if not matchRegex(username, USER_RE):
         return "invalid"
-    elif False: # check if username already in datastore
+    elif models.userExists(username):
         return "taken"
     else:
         return False
@@ -83,7 +84,7 @@ def emailError(email):
         return "invalid"
     else:
         return False
-    
+
 def createErrorArgs(username, passwords, email):
     errors = []
     if username == "invalid":
@@ -96,8 +97,23 @@ def createErrorArgs(username, passwords, email):
         errors.append("\"#verify\"")
     if email == "invalid":
         errors.append("\"#email\"")
-        
+    
     if len(errors) == 0:
         return None
     else:
         return ', '.join(errors)
+
+# password hashing
+def makeSalt():
+    return "".join([random.choice(string.ascii_letters)
+            for letter in xrange(5)])
+
+def makePasswordHash(username, password, salt=None):
+    if not salt:
+        salt = makeSalt()
+    h = hashlib.sha256(username + password + salt).hexdigest()
+    return "%s,%s" % (h, salt)
+
+def validPassword(username, password, h):
+    salt = h.split(',')[1]
+    return h == makePasswordHash(username, password, salt)
