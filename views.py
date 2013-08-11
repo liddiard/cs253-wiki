@@ -4,7 +4,10 @@ import logging # TODO: remove in production
 class ViewPage(utils.Handler):
     def get(self, slug):
         logged_in = utils.validLogon(self)
-        self.render("view.html", login=logged_in)
+        if not models.pageExists(slug) and logged_in:
+            self.redirect('.') # TODO: redirect to the correct edit page
+        else:
+            self.render("view.html", login=logged_in)
     def post(self):
         username = self.request.get('username')
         password = self.request.get('password')
