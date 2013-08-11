@@ -4,9 +4,10 @@
     {% if not login %}
         <div id="btn-register" class="btn btn-large btn-action">register</div>
         <div id="btn-login" class="btn btn-large btn-std">login</div>
-        <form class="overlay" id="login">
-            <input name="username" type="text" class="form-field"/>
-            <input name="password" type="password" class="form-field"/>
+        <form method="post" class="overlay" id="login">
+            <input name="username" type="text" placeholder="username" class="form-field"/>
+            <input name="password" type="password" placeholder="password" class="form-field"/>
+            <input type="submit" value=" &rarr; " class="btn btn-action"/>
         </form>
     {% endif %}
 
