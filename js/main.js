@@ -38,6 +38,10 @@ function deleteCookie(key) {
 
 $(document).ready(function(){
     $('#login').hide();
+    $('#btn-login').on("click", function(){
+        $('#login').fadeToggle("fast")
+                   .find('input').first().focus();
+    });
     $('#btn-register').on("click", function(){
         window.open("/signup/");
     });
