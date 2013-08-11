@@ -25,11 +25,15 @@ function invalidField(args) {
 
 function registerRedirect() {
     if (opener == null) {
-        window.location.replace("../");
+        window.location.replace("../../");
     } else {
         opener.location.reload();
         window.close();
     }
+}
+
+function deleteCookie(key) {
+    document.cookie = key+'="";-1; path=/';
 }
 
 $(document).ready(function(){
