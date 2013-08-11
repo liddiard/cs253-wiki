@@ -37,8 +37,15 @@ function deleteCookie(key) {
 }
 
 $(document).ready(function(){
-    $('#login').hide();
-    $('#btn-login').on("click", function(){
+    $('#login').hide()
+               .on("click", function(event){
+                   event.stopPropagation();
+            });
+    $('body').on("click", function(){
+        $('#login').fadeOut("fast");
+    });
+    $('#btn-login').on("click", function(event){
+        event.stopPropagation();
         $('#login').fadeToggle("fast")
                    .find('input').first().focus();
     });
