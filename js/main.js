@@ -41,20 +41,25 @@ $(document).ready(function(){
                .on("click", function(event){
                    event.stopPropagation();
             });
+
     $('body').on("click", function(){
         $('#login').fadeOut("fast");
     });
+
     $('#btn-login').on("click", function(event){
         event.stopPropagation();
         $('#login').fadeToggle("fast")
                    .find('input').first().focus();
     });
+
     $('#btn-register').on("click", function(){
         window.open("/signup/");
     });
-    
+
     $('#btn-logout').on("click", function(){
         deleteCookie('username');
         location.reload();
     });
+
+    $('#page-content').find('textarea').focus();
 });

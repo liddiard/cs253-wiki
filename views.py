@@ -10,7 +10,7 @@ class ViewPage(utils.Handler):
             page_content = models.getPageContent(slug)
             self.render("view.html", content=page_content, login=logged_in)
     
-    def post(self):
+    def post(self, slug):
         username = self.request.get('username')
         password = self.request.get('password')
         if models.validCredentials(username, password):
