@@ -7,7 +7,8 @@ class ViewPage(utils.Handler):
         if not models.pageExists(slug) and logged_in:
             self.redirect('../_edit/%s' % slug)
         else:
-            self.render("view.html", login=logged_in)
+            page_content = models.getPageContent(slug)
+            self.render("view.html", content=page_content, login=logged_in)
     
     def post(self):
         username = self.request.get('username')
@@ -23,7 +24,8 @@ class EditPage(utils.Handler):
     def get(self, slug):
         logged_in = utils.validLogon(self)
         if logged_in:
-            self.render("edit.html", login=logged_in)
+            page_content = models.getPageContent(slug)
+            self.render("edit.html", content=page_content, login=logged_in)
         else:
             self.redirect('../../%s' % slug)
     
