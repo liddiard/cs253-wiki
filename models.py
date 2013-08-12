@@ -40,3 +40,11 @@ def pageExists(slug):
         return False
     else: 
        return page.slug
+
+def getPageContent(slug):
+    q = Page.all().filter('slug =', slug)
+    page = q.get()
+    if page is None:
+        return None
+    else:
+        return page.body

@@ -5,9 +5,10 @@ class ViewPage(utils.Handler):
     def get(self, slug):
         logged_in = utils.validLogon(self)
         if not models.pageExists(slug) and logged_in:
-            self.redirect('.') # TODO: redirect to the correct edit page
+            self.redirect('../_edit/%s' % slug)
         else:
             self.render("view.html", login=logged_in)
+    
     def post(self):
         username = self.request.get('username')
         password = self.request.get('password')
@@ -19,7 +20,15 @@ class ViewPage(utils.Handler):
             self.write("invalid login credentials")
 
 class EditPage(utils.Handler):
-    pass
+    def get(self, slug):
+        logged_in = utils.validLogon(self)
+        if logged_in:
+            self.render("edit.html", login=logged_in)
+        else:
+            self.redirect('../../%s' % slug)
+    
+    def post(self):
+        pass
 
 class Register(utils.Handler):
     def get(self):
@@ -41,11 +50,11 @@ class Register(utils.Handler):
             user_cookie = utils.makeSecureVal(username)
             utils.setCookie(self, key="username", val=user_cookie)
             self.redirect("/signup/success/")
-            
+        
         else: # registration unsuccessful
             self.render("register.html", username=username, password=password, 
                         verify=verify, email=email, errors=errors)
-            
+
 class RegisterSuccess(utils.Handler):
     def get(self):
         if utils.validLogon(self):
