@@ -8,7 +8,8 @@ class ViewPage(utils.Handler):
             self.redirect('../_edit/%s' % slug)
         else:
             page_content = models.getPageContent(slug)
-            self.render("view.html", content=page_content, login=logged_in)
+            self.render("view.html", slug=slug, content=page_content,
+                        login=logged_in)
     
     def post(self, slug):
         username = self.request.get('username')
@@ -27,10 +28,14 @@ class EditPage(utils.Handler):
             page_content = models.getPageContent(slug)
             self.render("edit.html", content=page_content, login=logged_in)
         else:
-            self.redirect('../../%s' % slug)
+            self.redirect('/%s' % slug)
     
-    def post(self):
-        pass
+    def post(self, slug):
+        content = self.request.get('page-content')
+        user = utils.getUsername(self)
+            # potential vulerability: cookie integrity not validated
+        models.updatePage(slug, content, user)
+        self.redirect('/%s' % slug)
 
 class Register(utils.Handler):
     def get(self):

@@ -3,12 +3,12 @@
 {% block buttons %}
     <div id="btn-logout" class="btn btn-large btn-std">logout</div>
     <div class="separator"></div>
-    <div class="btn btn-large btn-action">save</div>
+    <input type="submit" value="save" class="btn btn-large btn-action" onclick="document.forms[0].submit();"/>
     <div class="btn btn-large btn-std">history</div>
 {% endblock %}
 
 {% block content %}
     <form id="page-content" method="post">
-        <textarea class="page-content">{{content}}</textarea>
+        <textarea name="page-content" class="page-content">{{content}}</textarea>
     </form>
 {% endblock %}

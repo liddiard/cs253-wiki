@@ -150,6 +150,7 @@ header .separator {
 .btn-large {
     width: 80px;
     padding: 10px;
+    font-size: 1em;
 }
 
 .btn-action {
