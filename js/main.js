@@ -60,6 +60,10 @@ $(document).ready(function(){
         deleteCookie('username');
         location.reload();
     });
+    
+    $('#btn-history').on("click", function(){
+        alert("This feature hasn't been implemented yet. I'm a little bit sorry, but it really just means that you can screw up any page and no one will know you did it. \n\nExcept me. I always know.");
+    });
 
     $('#page-content').find('textarea').focus().select();
 });

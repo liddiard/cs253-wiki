@@ -17,7 +17,7 @@ class ViewPage(utils.Handler):
         if models.validCredentials(username, password):
             user_cookie = utils.makeSecureVal(username)
             utils.setCookie(self, key="username", val=user_cookie)
-            self.write("valid")
+            self.redirect('../%s' % slug)
         else:
             self.write("invalid login credentials")
 
