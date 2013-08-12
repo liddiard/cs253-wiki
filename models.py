@@ -45,6 +45,6 @@ def getPageContent(slug):
     q = Page.all().filter('slug =', slug)
     page = q.get()
     if page is None:
-        return None
+        return ""
     else:
         return page.body
