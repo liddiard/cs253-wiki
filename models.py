@@ -1,5 +1,6 @@
 import webapp2, utils
 from google.appengine.ext import db
+import time
 
 class User(db.Model):
     username = db.StringProperty(required=True)
@@ -38,9 +39,12 @@ def updatePage(slug, content, user):
     if page:
         page.body = content
         page.last_modified_by = user
+        page.put()
+        time.sleep(0.1) # this is bad. there is nothing good about this.
     else:
         p = Page(slug=slug, body=content, last_modified_by=user)
         p.put()
+        time.sleep(0.1) # this is bad. there is nothing good about this.
 
 def pageExists(slug):
     q = Page.all().filter('slug =', slug)
