@@ -14,12 +14,14 @@ body {
     margin: 0;
     padding: 150px 10% 50px 10%;
     width: 80%;
-    line-height: 1.5em;
+    line-height: 1.6em;
     background-color: transparent;
     overflow: auto;
     resize: none;
     outline: none;
     z-index: -1;
+    font-family: monospace;
+    font-size: 1.1em;
 }
 
 header {

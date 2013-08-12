@@ -61,5 +61,5 @@ $(document).ready(function(){
         location.reload();
     });
 
-    $('#page-content').find('textarea').focus();
+    $('#page-content').find('textarea').focus().select();
 });
